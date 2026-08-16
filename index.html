@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Airindia Dwi Putri — Makeup Artist Jakarta | Bridal, Wisuda, Editorial</title>
+<meta name="description" content="Airindia Dwi Putri, makeup artist freelance berbasis di Jakarta. Spesialis makeup bridal natural glam, wisuda, dan photoshoot editorial. Tahan seharian, hasil natural.">
+
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  // === Token desain — ubah warna sekali di sini, otomatis tersebar ke seluruh halaman ===
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          cream: '#FFF8F6',
+          peach: '#FDF1EB',
+          blush: '#FFE4EC',
+          'rose-gold': '#E0A96D',
+          'rose-gold-deep': '#c9924f',
+          'soft-pink': '#FFD1DC',
+          charcoal: '#333333',
+          'warm-gray': '#8B7D75',
+          'warm-text': '#5a4f49',
+        },
+        fontFamily: {
+          serif: ['"Playfair Display"', 'serif'],
+          sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+
+<!-- FontAwesome 6 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  * { font-family: 'Plus Jakarta Sans', sans-serif; -webkit-font-smoothing: antialiased; }
+  .font-serif { font-family: 'Playfair Display', serif; }
+  body { background: #FFF8F6; color: #333333; overflow-x: hidden; }
+  html { scroll-behavior: smooth; }
+
+  /* ============ Bentuk lengkung untuk foto hero ============ */
+  .arch-frame {
+    border-radius: 50% 50% 14px 14px / 40% 40% 14px 14px;
+    overflow: hidden;
+  }
+  .arch-inner {
+    border-radius: 50% 50% 10px 10px / 38% 38% 10px 10px;
+    overflow: hidden;
+  }
+
+  /* ============ Nav glassmorphism ============ */
+  .glass-nav {
+    background: rgba(255, 248, 246, 0.78);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border-bottom: 1px solid rgba(224, 169, 109, 0.18);
+  }
+
+  /* ============ Garis bawah link editorial ============ */
+  .editorial-link { position: relative; }
+  .editorial-link::after {
+    content: ''; position: absolute; left: 0; bottom: -3px;
+    width: 0; height: 1px; background: #E0A96D;
+    transition: width 0.4s ease;
+  }
+  .editorial-link:hover::after { width: 100%; }
+
+  /* ============ Masonry portfolio ============ */
+  .masonry { column-count: 1; column-gap: 1rem; }
+  @media (min-width: 640px) { .masonry { column-count: 2; } }
+  @media (min-width: 1024px) { .masonry { column-count: 3; } }
+  .masonry-item { break-inside: avoid; margin-bottom: 1rem; }
+
+  /* ============ Hover portfolio ============ */
+  .portfolio-item img { transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+  .portfolio-item:hover img { transform: scale(1.06); }
+  .portfolio-item .overlay { opacity: 0; transition: opacity 0.4s ease; }
+  .portfolio-item:hover .overlay { opacity: 1; }
+
+  /* ============ Tombol filter ============ */
+  .filter-btn { transition: all 0.3s ease; }
+  .filter-btn.active { background: #333333; color: #FFF8F6; border-color: #333333; }
+
+  /* ============ Hide scrollbar filter row ============ */
+  .filter-scroll::-webkit-scrollbar { display: none; }
+  .filter-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* ============ Divider section ============ */
+  .section-divider { border-top: 1px solid rgba(224, 169, 109, 0.18); }
+
+  /* ============ Reduced motion ============ */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+    html { scroll-behavior: auto; }
+    .portfolio-item:hover img { transform: none; }
+  }
+
+  /* ============ Touch device: overlay selalu tampil ============ */
+  @media (pointer: coarse) {
+    .portfolio-item .overlay { opacity: 1; background: linear-gradient(to top, rgba(0,0,0,0.55), transparent 55%); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVIGASI — sticky glassmorphism
+     ============================================================ -->
+<nav class="glass-nav fixed top-0 left-0 right-0 z-50">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-4 flex items-center justify-between">
+    <!-- Brand: nama depan saja di wordmark -->
+    <a href="#" class="font-serif text-xl md:text-2xl font-medium tracking-tight">
+      Airindia <span class="italic text-rose-gold">Dwi Putri</span>
+    </a>
+
+    <!-- Nav desktop -->
+    <div class="hidden md:flex items-center gap-9 text-sm">
+      <a href="#tentang" class="editorial-link">Tentang</a>
+      <a href="#layanan" class="editorial-link">Layanan</a>
+      <a href="#portofolio" class="editorial-link">Portofolio</a>
+      <a href="#proses" class="editorial-link">Cara Pesan</a>
+      <a href="#faq" class="editorial-link">FAQ</a>
+      <a href="#kontak" class="editorial-link">Kontak</a>
+    </div>
+
+    <!-- CTA Booking (desktop) -->
+    <a href="#kontak" class="hidden md:inline-flex items-center gap-2 bg-charcoal text-cream px-5 py-2.5 text-sm hover:bg-rose-gold transition-colors duration-300">
+      <i class="fa-brands fa-whatsapp"></i> Booking Sekarang
+    </a>
+
+    <!-- Toggle menu mobile -->
+    <button id="mobile-menu-btn" class="md:hidden text-xl text-charcoal" aria-label="Buka menu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+
+  <!-- Menu mobile -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-rose-gold/15 px-6 py-5 space-y-3 text-sm">
+    <a href="#tentang" class="block py-1.5">Tentang</a>
+    <a href="#layanan" class="block py-1.5">Layanan</a>
+    <a href="#portofolio" class="block py-1.5">Portofolio</a>
+    <a href="#proses" class="block py-1.5">Cara Pesan</a>
+    <a href="#faq" class="block py-1.5">FAQ</a>
+    <a href="#kontak" class="block py-1.5">Kontak</a>
+    <a href="#kontak" class="inline-flex items-center gap-2 bg-charcoal text-cream px-5 py-2.5 mt-2">
+      <i class="fa-brands fa-whatsapp"></i> Booking Sekarang
+    </a>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HERO — asimetris 7/5, foto lengkung, dua CTA
+     ============================================================ -->
+<section class="pt-28 md:pt-36 pb-16 md:pb-24 px-6 lg:px-10">
+  <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+
+    <!-- Kiri: blok teks (7 kolom) -->
+    <div class="lg:col-span-7 order-2 lg:order-1">
+      <!-- Penanda section editorial -->
+      <div class="flex items-center gap-3 mb-8 text-sm text-warm-gray">
+        <span class="font-serif italic">No. 01</span>
+        <span class="w-10 h-px bg-rose-gold/40"></span>
+        <span>Makeup Artist · Jakarta</span>
+      </div>
+
+      <!-- Headline 3 baris, kata "percaya diri" di-italic -->
+      <h1 class="font-serif text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight font-medium">
+        Wajah yang <span class="italic font-normal text-rose-gold">percaya diri</span>,<br>
+        di hari yang tak<br>
+        akan terulang.
+      </h1>
+
+      <p class="mt-8 text-base md:text-lg text-warm-text max-w-xl leading-relaxed">
+        Airindia Dwi Putri — makeup artist freelance untuk pernikahan, wisuda, dan acara spesial. Teknik skin-first, tahan hingga delapan jam, tanpa foundation yang terasa tebal. Delapan tahun pengalaman, lebih dari 300 pengantin.
+      </p>
+
+      <!-- Dua CTA — primary filled, secondary outlined -->
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a href="#portofolio" class="inline-flex items-center gap-3 bg-rose-gold text-white px-7 py-4 text-sm tracking-wide hover:bg-rose-gold-deep transition-colors duration-300">
+          Lihat Portofolio <i class="fa-solid fa-arrow-right text-xs"></i>
+        </a>
+        <a href="#kontak" class="inline-flex items-center gap-3 border border-charcoal text-charcoal px-7 py-4 text-sm tracking-wide hover:bg-charcoal hover:text-cream transition-colors duration-300">
+          <i class="fa-brands fa-whatsapp"></i> Konsultasi via WhatsApp
+        </a>
+      </div>
+
+      <!-- Baris sosial media -->
+      <div class="mt-12 flex items-center gap-6 text-warm-gray">
+        <span class="text-xs tracking-[0.2em] uppercase">Ikuti</span>
+        <div class="flex gap-5 text-lg">
+          <a href="https://www.instagram.com/" aria-label="Instagram" class="hover:text-rose-gold transition-colors"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/" aria-label="TikTok" class="hover:text-rose-gold transition-colors"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="https://pinterest.com/" aria-label="Pinterest" class="hover:text-rose-gold transition-colors"><i class="fa-brands fa-pinterest"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kanan: foto portrait bentuk lengkung (5 kolom) -->
+    <div class="lg:col-span-5 order-1 lg:order-2">
+      <div class="relative max-w-md mx-auto">
+        <!-- Bingkai luar dengan border rose-gold -->
+        <div class="arch-frame border border-rose-gold/40 p-2.5">
+          <div class="arch-inner">
+            <!-- Ganti src dengan foto Anda, rasio ideal 4:5 -->
+            <img src="C:\xampp\htdocs\paket-basic\airindiadp.png" alt="Airindia Dwi Putri, makeup artist" class="w-full h-auto block">
+          </div>
+        </div>
+        <!-- Tag mengambang: pengalaman & jumlah pengantin -->
+        <div class="absolute -bottom-6 left-2 sm:-left-6 bg-cream border border-rose-gold/30 px-5 py-3.5 shadow-[0_10px_30px_-15px_rgba(0,0,0,0.15)]">
+          <div class="font-serif text-2xl">8 <span class="text-xs font-sans text-warm-gray tracking-wide">tahun</span></div>
+          <div class="text-xs text-warm-gray mt-0.5">300+ pengantin</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TENTANG — asimetris 5/6, filosofi + statistik inline
+     ============================================================ -->
+<section id="tentang" class="py-20 md:py-32 px-6 lg:px-10 section-divider">
+  <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 lg:gap-20">
+
+    <!-- Kiri: heading + foto studio -->
+    <div class="lg:col-span-5">
+      <div class="flex items-center gap-3 mb-6 text-sm text-warm-gray">
+        <span class="font-serif italic">No. 02</span>
+        <span class="w-10 h-px bg-rose-gold/40"></span>
+        <span>Tentang Airindia</span>
+      </div>
+      <h2 class="font-serif text-4xl md:text-5xl leading-[1.1]">
+        Filosofinya sederhana — <span class="italic">wajahmu, versi terbaik.</span>
+      </h2>
+
+      <div class="mt-12">
+        <img src="C:\xampp\htdocs\paket-basic\studioadp.png" alt="Detail meja kerja Airindia" class="w-full h-auto">
+        <p class="mt-3 text-xs text-warm-gray italic">Studio di Jakarta Selatan. By appointment only.</p>
+      </div>
+    </div>
+
+    <!-- Kanan: prose + statistik inline -->
+    <div class="lg:col-span-6 lg:col-start-7 text-warm-text leading-relaxed space-y-6 text-lg">
+      <p>
+        Aku mulai meminjam kuas makeup ibu di kelas 8 SMP, dan entah bagaimana tidak pernah mengembalikannya. Tahun 2016, setelah lulus pelatihan di <span class="font-serif italic">Puspita Martha</span> dan magang di satu studio di Kemang, aku memutuskan solo. Sekarang, delapan tahun kemudian, kursiku sudah menampung lebih dari 300 pengantin.
+      </p>
+      <p>
+        Aku nggak percaya kontur yang sama untuk setiap wajah. Setiap wajah yang duduk di kursiku dapat peta yang berbeda — perpaduan hangat dan dingin yang berbeda, penempatan cahaya yang berbeda. Tiga kata yang aku pegang sebagai brief, bukan slogan: <span class="text-rose-gold font-medium">mulus, tahan lama, menyatu dengan kulit.</span>
+      </p>
+
+      <!-- Statistik inline, bukan band terpisah -->
+      <div class="pt-8 mt-4 border-t border-rose-gold/25 grid grid-cols-3 gap-6">
+        <div>
+          <div class="font-serif text-3xl md:text-4xl">300+</div>
+          <div class="text-sm text-warm-gray mt-1">pengantin sejak 2016</div>
+        </div>
+        <div>
+          <div class="font-serif text-3xl md:text-4xl">42</div>
+          <div class="text-sm text-warm-gray mt-1">shoot editorial</div>
+        </div>
+        <div>
+          <div class="font-serif text-3xl md:text-4xl">8 jam</div>
+          <div class="text-sm text-warm-gray mt-1">rata-rata tahan makeup</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     LAYANAN — daftar editorial bernomor (BUKAN grid 3 kartu)
+     ============================================================ -->
+<section id="layanan" class="py-20 md:py-32 px-6 lg:px-10 section-divider bg-peach">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex items-center gap-3 mb-6 text-sm text-warm-gray">
+      <span class="font-serif italic">No. 03</span>
+      <span class="w-10 h-px bg-rose-gold/40"></span>
+      <span>Layanan & Paket</span>
+    </div>
+    <h2 class="font-serif text-4xl md:text-5xl mb-16 max-w-2xl">Empat jenis kursi di studio-ku.</h2>
+
+    <div>
+      <!-- Layanan 01 -->
+      <div class="grid lg:grid-cols-12 gap-6 lg:gap-10 py-10 border-t border-rose-gold/25 items-center">
+        <div class="lg:col-span-1 font-serif italic text-3xl text-rose-gold">01</div>
+        <div class="lg:col-span-4">
+          <h3 class="font-serif text-3xl md:text-4xl">Paket Bridal</h3>
+          <p class="text-xs text-warm-gray mt-2">Pernikahan · Akad + Resepsi · Prewedding</p>
+        </div>
+        <div class="lg:col-span-5 text-warm-text leading-relaxed">
+          Trial 6 minggu sebelumnya, sesi pagi hari H, touch-up kit disertakan. Base airbrush untuk kamera HD, bulu mata individual, lip stain tahan ciuman.
+        </div>
+        <div class="lg:col-span-2 lg:text-right">
+          <div class="font-serif text-2xl">mulai Rp 5,5jt</div>
+          <div class="text-xs text-warm-gray mt-1">termasuk trial</div>
+        </div>
+      </div>
+
+      <!-- Layanan 02 -->
+      <div class="grid lg:grid-cols-12 gap-6 lg:gap-10 py-10 border-t border-rose-gold/25 items-center">
+        <div class="lg:col-span-1 font-serif italic text-3xl text-rose-gold">02</div>
+        <div class="lg:col-span-4">
+          <h3 class="font-serif text-3xl md:text-4xl">Engagement & Lamaran</h3>
+          <p class="text-xs text-warm-gray mt-2">Lamaran · Engagement · Unduhan</p>
+        </div>
+        <div class="lg:col-span-5 text-warm-text leading-relaxed">
+          Sesi 90 menit untuk acara keluarga dekat. Soft glam yang tahan foto dan sesi makan bersama. Add-on hair styling tersedia.
+        </div>
+        <div class="lg:col-span-2 lg:text-right">
+          <div class="font-serif text-2xl">mulai Rp 2,5jt</div>
+          <div class="text-xs text-warm-gray mt-1">per sesi</div>
+        </div>
+      </div>
+
+      <!-- Layanan 03 -->
+      <div class="grid lg:grid-cols-12 gap-6 lg:gap-10 py-10 border-t border-rose-gold/25 items-center">
+        <div class="lg:col-span-1 font-serif italic text-3xl text-rose-gold">03</div>
+        <div class="lg:col-span-4">
+          <h3 class="font-serif text-3xl md:text-4xl">Wisuda & Pesta</h3>
+          <p class="text-xs text-warm-gray mt-2">Wisuda · Prom · Ulang tahun</p>
+        </div>
+        <div class="lg:col-span-5 text-warm-text leading-relaxed">
+          Sesi 75 menit untuk panggung dan dance floor. Tahan flash kamera, tahan keringat, lip yang bertahan sehabis makan.
+        </div>
+        <div class="lg:col-span-2 lg:text-right">
+          <div class="font-serif text-2xl">mulai Rp 750rb</div>
+          <div class="text-xs text-warm-gray mt-1">per sesi</div>
+        </div>
+      </div>
+
+      <!-- Layanan 04 -->
+      <div class="grid lg:grid-cols-12 gap-6 lg:gap-10 py-10 border-t border-b border-rose-gold/25 items-center">
+        <div class="lg:col-span-1 font-serif italic text-3xl text-rose-gold">04</div>
+        <div class="lg:col-span-4">
+          <h3 class="font-serif text-3xl md:text-4xl">Photoshoot & Komersial</h3>
+          <p class="text-xs text-warm-gray mt-2">Editorial · Campaign · Iklan brand</p>
+        </div>
+        <div class="lg:col-span-5 text-warm-text leading-relaxed">
+          Half-day atau full-day, dengan retouch on-set. Aku bekerja sama dengan fotografer soal pencahayaan dan kontinuitas — kit-ku menutupi semua undertone kulit Indonesia.
+        </div>
+        <div class="lg:col-span-2 lg:text-right">
+          <div class="font-serif text-2xl">mulai Rp 4jt</div>
+          <div class="text-xs text-warm-gray mt-1">half-day rate</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="mt-10 text-sm text-warm-gray">
+      Cari layanan lain — mother-of-bride, rombongan, atau on-location luar kota?
+      <a href="#kontak" class="text-rose-gold underline underline-offset-4">Kirim pesan ke aku.</a>
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     PORTOFOLIO — masonry, filter, hover zoom
+     ============================================================ -->
+<section id="portofolio" class="py-20 md:py-32 px-6 lg:px-10 section-divider">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Header + filter -->
+    <div class="flex flex-wrap items-end justify-between gap-8 mb-12">
+      <div>
+        <div class="flex items-center gap-3 mb-6 text-sm text-warm-gray">
+          <span class="font-serif italic">No. 04</span>
+          <span class="w-10 h-px bg-rose-gold/40"></span>
+          <span>Karya Pilihan</span>
+        </div>
+        <h2 class="font-serif text-4xl md:text-5xl">Look dari kursi-ku, 2023—2024.</h2>
+      </div>
+      <div class="flex gap-2 filter-scroll overflow-x-auto pb-1">
+        <button data-filter="all" class="filter-btn active px-4 py-2 text-sm border border-charcoal/30 whitespace-nowrap">Semua</button>
+        <button data-filter="bridal" class="filter-btn px-4 py-2 text-sm border border-charcoal/30 whitespace-nowrap">Bridal</button>
+        <button data-filter="editorial" class="filter-btn px-4 py-2 text-sm border border-charcoal/30 whitespace-nowrap">Editorial</button>
+        <button data-filter="party" class="filter-btn px-4 py-2 text-sm border border-charcoal/30 whitespace-nowrap">Pesta</button>
+      </div>
+    </div>
+
+    <!-- Masonry grid — 9 item, rasio bervariasi -->
+    <div class="masonry" id="portfolio-grid">
+
+      <div class="masonry-item portfolio-item" data-cat="bridal">
+        <div class="relative overflow-hidden">
+          <img src="C:\xampp\htdocs\paket-basic\bridal1.png" alt="Bridal look — Andini" class="w-full h-auto block">
+          <div class="overlay absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent flex items-end p-5">
+            <div class="text-white">
+              <div class="text-[10px] uppercase tracking-[0.2em] opacity-80">Bridal</div>
+              <div class="font-serif text-lg mt-0.5">Andini · Akad Jawa</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="masonry-item portfolio-item" data-cat="editorial">
+        <div class="relative overflow-hidden">
+          <img src="C:\xampp\htdocs\paket-basic\editorial1.png" alt="Editorial beauty close-up" class="w-full h-auto block">
+          <div class="overlay absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent flex items-end p-5">
+            <div class="text-white">
+              <div class="text-[10px] uppercase tracking-[0.2em] opacity-80">Editorial</div>
+              <div class="font-serif text-lg mt-0.5">Beauty close-up · Majalah Glow</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="masonry-item portfolio-item" data-cat="party">
+        <div class="relative overflow-hidden">
+          <img src="C:\xampp\htdocs\paket-basic\party1.png" alt="Soft glam ulang tahun ke-21" class="w-full h-auto block">
+          <div class="overlay absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent flex items-end p-5">
+            <div class="text-white">
+              <div class="text-[10px] uppercase tracking-[0.2em] opacity-80">Pesta</div>
+              <div class="font-serif text-lg mt-0.5">Soft glam · Ulang tahun ke-21</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="masonry-item portfolio-item" data-cat="bridal">
+        <div class="relative overflow-hidden">
+          <img src="C:\xampp\htdocs\paket-basic\bridal2.png" alt="Bridal — Sari Adat Sunda" class="w-full h-auto block">
+          <div class="overlay absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent flex items-end p-5">
+            <div class="text-white">
+              <div class="text-[10px] uppercase tracking-[0.2em] opacity-80">Bridal</div>
+              <div class="font-serif text-lg mt-0.5">Sari · Adat Sunda</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="masonry-item portfolio-item" data-cat="editorial">
+        <div class="relative overflow-hidden">
+          <img src="C:\xampp\htdocs\paket-basic\editorial2.png" alt="Campaign bronze untuk brand lokal" class="w-full h-auto block">
+          <div class="overlay absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent flex items-end p-5">
+            <div class="text-white">
+              <div class="text-[10px] uppercase tracking-[0.2em] opacity-80">Editorial</div>
+              <div class="font-serif text-lg mt-0.5">Campaign bronze · Brand lokal</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="masonry-item portfolio-item" data-cat="party">
+        <div class="relative overflow-hidden">
+          <img src="C:\xampp\htdocs\paket-basic\party2.png" alt="Makeup wisuda" class="w-full h-auto block">
+          <div class="overlay absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent flex items-end p-5">
+            <div class="text-white">
+              <div class="text-[10px] uppercase tracking-[0.2em] opacity-80">Pesta</div>
+              <div class="font-serif text-lg mt-0.5">Wisuda · Angkatan 2024</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="masonry-item portfolio-item" data-cat="bridal">
+        <div class="relative overflow-hidden">
+          <img src="C:\xampp\htdocs\paket-basic\bridal3.png" alt="Bridal — Maya Arabian Look" class="w-full h-auto block">
+          <div class="overlay absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent flex items-end p-5">
+            <div class="text-white">
+              <div class="text-[10px] uppercase tracking-[0.2em] opacity-80">Bridal</div>
+              <div class="font-serif text-lg mt-0.5">Maya · Arabian Look</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="masonry-item portfolio-item" data-cat="editorial">
+        <div class="relative overflow-hidden">
+          <img src="C:\xampp\htdocs\paket-basic\editorial3.png" alt="Studi makeup monokrom" class="w-full h-auto block">
+          <div class="overlay absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent flex items-end p-5">
+            <div class="text-white">
+              <div class="text-[10px] uppercase tracking-[0.2em] opacity-80">Editorial</div>
+              <div class="font-serif text-lg mt-0.5">Studi monokrom · Personal project</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="masonry-item portfolio-item" data-cat="party">
+        <div class="relative overflow-hidden">
+          <img src="C:\xampp\htdocs\paket-basic\party3.png" alt="Engagement glam — Tania" class="w-full h-auto block">
+          <div class="overlay absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent flex items-end p-5">
+            <div class="text-white">
+              <div class="text-[10px] uppercase tracking-[0.2em] opacity-80">Pesta</div>
+              <div class="font-serif text-lg mt-0.5">Engagement glam · Tania</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CARA PESAN — 4 langkah horizontal (SECTION BARU, bisnis-kritis)
+     ============================================================ -->
+<section id="proses" class="py-20 md:py-32 px-6 lg:px-10 section-divider bg-peach">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex items-center gap-3 mb-6 text-sm text-warm-gray">
+      <span class="font-serif italic">No. 05</span>
+      <span class="w-10 h-px bg-rose-gold/40"></span>
+      <span>Cara Pesan</span>
+    </div>
+    <h2 class="font-serif text-4xl md:text-5xl mb-4 max-w-2xl">Empat langkah, dari chat sampai hari H.</h2>
+    <p class="text-warm-text max-w-xl mb-16">
+      Aku tahu book MUA untuk hari bahagia itu nerve-wracking. Prosedurnya dibuat sesederhana mungkin supaya kamu bisa fokus ke acaranya.
+    </p>
+
+    <!-- 4 langkah horizontal di desktop, vertikal di mobile -->
+    <div class="grid md:grid-cols-4 gap-px bg-rose-gold/25 border border-rose-gold/25">
+
+      <!-- Langkah 1 -->
+      <div class="bg-cream p-8 md:p-10">
+        <div class="font-serif italic text-2xl text-rose-gold mb-4">i.</div>
+        <h3 class="font-serif text-xl mb-3">Konsultasi WhatsApp</h3>
+        <p class="text-sm text-warm-text leading-relaxed">
+          Chat tanggal acara, jenis event, dan referensi look kalau ada. Aku kasih saran paket yang cocok dan cek ketersediaan jadwal.
+        </p>
+      </div>
+
+      <!-- Langkah 2 -->
+      <div class="bg-cream p-8 md:p-10">
+        <div class="font-serif italic text-2xl text-rose-gold mb-4">ii.</div>
+        <h3 class="font-serif text-xl mb-3">DP 50%</h3>
+        <p class="text-sm text-warm-text leading-relaxed">
+          Transfer DP untuk lock tanggal. Tanggal dijamin nggak di-book orang lain. Sisa pelunasan H-3 sebelum acara.
+        </p>
+      </div>
+
+      <!-- Langkah 3 -->
+      <div class="bg-cream p-8 md:p-10">
+        <div class="font-serif italic text-2xl text-rose-gold mb-4">iii.</div>
+        <h3 class="font-serif text-xl mb-3">Trial Makeup</h3>
+        <p class="text-sm text-warm-text leading-relaxed">
+          Khusus paket bridal: 4—6 minggu sebelum hari H. Kita coba base, eye look, dan lip. Foto dengan flash HP untuk simulasi kamera.
+        </p>
+      </div>
+
+      <!-- Langkah 4 -->
+      <div class="bg-cream p-8 md:p-10">
+        <div class="font-serif italic text-2xl text-rose-gold mb-4">iv.</div>
+        <h3 class="font-serif text-xl mb-3">Hari H</h3>
+        <p class="text-sm text-warm-text leading-relaxed">
+          Aku dan asisten datang ke lokasi sesuai jadwal. Touch-up kit diserahkan ke keluarga sebelum aku pulang. Sisa? Nikmati harimu.
+        </p>
+      </div>
+    </div>
+
+    <p class="mt-8 text-sm text-warm-gray">
+      <i class="fa-solid fa-circle-info mr-2 text-rose-gold"></i>
+      Untuk lokasi di luar Jabodetabek, biaya transport & akomodasi ditanggung klien. Detail dibahas saat konsultasi.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     TESTIMONIAL — 1 featured + 2 inline (BUKAN 3 kartu)
+     ============================================================ -->
+<section id="testimonials" class="py-20 md:py-32 px-6 lg:px-10 section-divider bg-blush">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="flex items-center gap-3 mb-12 text-sm text-warm-gray">
+      <span class="font-serif italic">No. 06</span>
+      <span class="w-10 h-px bg-rose-gold/40"></span>
+      <span>Kata Mereka</span>
+    </div>
+
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+
+      <!-- Testimoni utama (7 kolom) -->
+      <div class="lg:col-span-7">
+        <!-- Bintang rose-gold, bukan kuning -->
+        <div class="text-rose-gold mb-6 text-sm tracking-[0.3em]">★ ★ ★ ★ ★</div>
+        <blockquote class="font-serif text-3xl md:text-4xl lg:text-5xl leading-[1.2] text-charcoal">
+          "Mbak Airindia bikin aku tetap kelihatan seperti diriku sendiri di hari pernikahan — <span class="italic">bukan versi lain, tapi aku yang terbaik.</span> Dua belas jam, tiga ganti baju, satu kali nangis, makeup-nya tetap di tempat."
+        </blockquote>
+        <div class="mt-8 flex items-center gap-4">
+          <img src="C:\xampp\htdocs\paket-basic\sari.png" alt="Sari Wijaya" class="w-14 h-14 rounded-full object-cover">
+          <div>
+            <div class="font-medium text-charcoal">Sari Wijaya</div>
+            <div class="text-sm text-warm-gray">Pengantin · Resepsi outdoor Bandung, Mei 2024</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dua testimoni pendamping (5 kolom) -->
+      <div class="lg:col-span-5 space-y-8 lg:pt-4">
+        <div class="pb-8 border-b border-rose-gold/25">
+          <div class="text-rose-gold mb-3 text-sm tracking-[0.3em]">★ ★ ★ ★ ★</div>
+          <p class="text-warm-text leading-relaxed text-lg">
+            "Base-nya aja udah worth it banget. Foto wisudaku kayak pakai filter soft-focus, padahal di real life natural banget."
+          </p>
+          <div class="mt-4 text-sm">
+            <span class="font-medium">Dinda Pradipta</span> <span class="text-warm-gray">· Wisuda, Juli 2024</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="text-rose-gold mb-3 text-sm tracking-[0.3em]">★ ★ ★ ★ ★</div>
+          <p class="text-warm-text leading-relaxed text-lg">
+            "Shoot 14 jam bareng mbak. Kontinuitasnya rapi — wajah model di jam pertama sama jam ke-14."
+          </p>
+          <div class="mt-4 text-sm">
+            <span class="font-medium">Kak Rendra P.</span> <span class="text-warm-gray">· Fotografer, campaign brand lokal</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FAQ — format Q&A editorial (BUKAN accordion)
+     ============================================================ -->
+<section id="faq" class="py-20 md:py-32 px-6 lg:px-10 section-divider">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="flex items-center gap-3 mb-6 text-sm text-warm-gray">
+      <span class="font-serif italic">No. 07</span>
+      <span class="w-10 h-px bg-rose-gold/40"></span>
+      <span>Pertanyaan Umum</span>
+    </div>
+    <h2 class="font-serif text-4xl md:text-5xl mb-16 max-w-2xl">Hal-hal yang sering ditanya sebelum transfer DP.</h2>
+
+    <!-- Grid 2 kolom di desktop, single kolom di mobile -->
+    <div class="grid md:grid-cols-2 gap-x-16 gap-y-10">
+
+      <div>
+        <h3 class="font-serif italic text-xl mb-3 text-charcoal">Apakah bisa ke lokasi luar Jakarta?</h3>
+        <p class="text-warm-text leading-relaxed">
+          Bisa. Untuk lokasi di luar Jabodetabek, biaya transport dan akomodasi ditanggung klien. Untuk luar kota yang dekat (Bandung, Bogor, Sukabumi), cukup biaya transport. Detail dibahas saat konsultasi WhatsApp.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="font-serif italic text-xl mb-3 text-charcoal">Apakah termasuk hair styling?</h3>
+        <p class="text-warm-text leading-relaxed">
+          Untuk paket bridal sudah termasuk. Untuk paket lain (engagement, wisuda, party) hair styling adalah add-on Rp 350rb—500rb tergantung gaya. Bisa langsung dibahas saat booking.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="font-serif italic text-xl mb-3 text-charcoal">Bagaimana kalau tanggal berubah?</h3>
+        <p class="text-warm-text leading-relaxed">
+          Reschedule minimal H-30 sebelum hari H, DP tetap berlaku untuk tanggal baru. Kalau kurang dari H-30, DP hangus kecuali ada kasus force majeure (kecelakaan, duka, sakit) — kasus seperti ini aku selalu fleksibel, tinggal komunikasikan.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="font-serif italic text-xl mb-3 text-charcoal">Berapa lama proses makeup-nya?</h3>
+        <p class="text-warm-text leading-relaxed">
+          Bridal lengkap: 2,5—3 jam (termasuk hair). Engagement & party: 1,5 jam. Wisuda: 75 menit. Aku selalu datang 30 menit lebih awal dari jadwal untuk persiapan dan briefing.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="font-serif italic text-xl mb-3 text-charcoal">Apa makeup-nya tahan seharian?</h3>
+        <p class="text-warm-text leading-relaxed">
+          Ya, base-ku dirancang untuk 8—12 jam dengan touch-up minimal. Tapi tetap aku kasih touch-up kit (lip, blotting paper, bedak) supaya kamu bisa retouch sendiri kalau perlu. Untuk outdoor di cuaca panas ekstrem, aku kasih saran tambahan.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="font-serif italic text-xl mb-3 text-charcoal">Apakah bisa trial dulu sebelum DP?</h3>
+        <p class="text-warm-text leading-relaxed">
+          Trial hanya untuk paket bridal dan dilakukan setelah DP — bukan sebelum. Tapi kalau kamu ragu, aku bisa kirim portofolio lengkap dan referensi look yang sesuai dengan preferensimu via WhatsApp dulu, gratis.
+        </p>
+      </div>
+
+    </div>
+
+    <p class="mt-16 text-sm text-warm-gray">
+      Masih ada pertanyaan lain?
+      <a href="#kontak" class="text-rose-gold underline underline-offset-4">Tanya langsung via WhatsApp.</a>
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     KONTAK — CTA WhatsApp + 3 kolom info
+     ============================================================ -->
+<section id="kontak" class="py-20 md:py-32 px-6 lg:px-10 section-divider">
+  <div class="max-w-5xl mx-auto text-center">
+
+    <div class="flex items-center justify-center gap-3 mb-6 text-sm text-warm-gray">
+      <span class="font-serif italic">No. 08</span>
+      <span class="w-10 h-px bg-rose-gold/40"></span>
+      <span>Hubungi Aku</span>
+    </div>
+
+    <h2 class="font-serif text-4xl md:text-6xl leading-[1.1] max-w-3xl mx-auto">
+      Yuk ngobrol soal <span class="italic text-rose-gold">harimu.</span>
+    </h2>
+
+    <p class="mt-6 text-warm-text text-lg max-w-xl mx-auto leading-relaxed">
+      WhatsApp adalah cara tercepat. Kasih tahu tanggal acara, jenis event, dan referensi look kalau ada. Aku balas dalam 24 jam.
+    </p>
+
+    <!-- CTA WhatsApp utama -->
+    <!-- Ganti nomor 6281234567890 dengan nomor WhatsApp kamu. Format: kode negara + nomor tanpa 0 di depan. -->
+    <div class="mt-12">
+      <a href="https://wa.me/6281234567890?text=Halo%20Mbak%20Airindia%2C%20saya%20ingin%20tanya%20soal%20jadwal%20makeup"
+         target="_blank" rel="noopener"
+         class="inline-flex items-center gap-3 bg-charcoal text-cream px-8 py-5 text-base hover:bg-[#25D366] transition-colors duration-300">
+        <i class="fa-brands fa-whatsapp text-xl"></i>
+        <span>Chat WhatsApp · +62 812-3456-7890</span>
+        <i class="fa-solid fa-arrow-right text-xs ml-2"></i>
+      </a>
+    </div>
+
+    <!-- Baris info -->
+    <div class="mt-16 grid sm:grid-cols-3 gap-8 text-left max-w-3xl mx-auto">
+      <div>
+        <div class="text-xs uppercase tracking-[0.2em] text-warm-gray mb-2">Studio</div>
+        <div class="text-charcoal">Jl. Senopati No. 24<br>Jakarta Selatan</div>
+      </div>
+      <div>
+        <div class="text-xs uppercase tracking-[0.2em] text-warm-gray mb-2">Jam Operasional</div>
+        <div class="text-charcoal">Sel—Sab, 09—18<br>By appointment</div>
+      </div>
+      <div>
+        <div class="text-xs uppercase tracking-[0.2em] text-warm-gray mb-2">Ikuti</div>
+        <div class="flex gap-4 text-charcoal text-lg">
+          <a href="https://instagram.com/" aria-label="Instagram" class="hover:text-rose-gold transition-colors"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://tiktok.com/" aria-label="TikTok" class="hover:text-rose-gold transition-colors"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="https://pinterest.com/" aria-label="Pinterest" class="hover:text-rose-gold transition-colors"><i class="fa-brands fa-pinterest"></i></a>
+          <a href="mailto:hello@airindiadp.id" aria-label="Email" class="hover:text-rose-gold transition-colors"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER — minimal, ditandatangani
+     ============================================================ -->
+<footer class="px-6 lg:px-10 py-10 section-divider">
+  <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-4 text-sm text-warm-gray">
+    <div class="font-serif text-base text-charcoal">Airindia <span class="italic text-rose-gold">Dwi Putri</span> · Makeup Artist</div>
+    <div>© 2024 · Berbasis di Jakarta · Melayani seluruh Jabodetabek & luar kota</div>
+  </div>
+</footer>
+
+<script>
+  // ============================================================
+  // Toggle menu mobile
+  // ============================================================
+  const mobileBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  mobileBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+    const icon = mobileBtn.querySelector('i');
+    icon.classList.toggle('fa-bars');
+    icon.classList.toggle('fa-xmark');
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      const icon = mobileBtn.querySelector('i');
+      icon.classList.add('fa-bars');
+      icon.classList.remove('fa-xmark');
+    });
+  });
+
+  // ============================================================
+  // Filter portofolio
+  // ============================================================
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const portfolioItems = document.querySelectorAll('.portfolio-item');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.getAttribute('data-filter');
+      portfolioItems.forEach(item => {
+        const cat = item.getAttribute('data-cat');
+        item.style.display = (filter === 'all' || cat === filter) ? '' : 'none';
+      });
+    });
+  });
+
+  // ============================================================
+  // Smooth scroll dengan offset untuk sticky nav
+  // ============================================================
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+      const target = document.querySelector(targetId);
+      if (target) {
+        e.preventDefault();
+        const navHeight = document.querySelector('nav').offsetHeight;
+        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight + 1;
+        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
